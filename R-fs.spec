@@ -4,15 +4,13 @@
 #
 Name     : R-fs
 Version  : 1.2.6
-Release  : 1
+Release  : 2
 URL      : https://cran.r-project.org/src/contrib/fs_1.2.6.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/fs_1.2.6.tar.gz
 Summary  : Cross-Platform File System Operations Based on 'libuv'
 Group    : Development/Tools
 License  : CC-BY-4.0 GPL-3.0 MIT
 Requires: R-fs-lib = %{version}-%{release}
-Requires: R-Rcpp
-Requires: R-rlang
 BuildRequires : R-Rcpp
 BuildRequires : R-rlang
 BuildRequires : buildreq-R
@@ -36,10 +34,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1540747708
+export SOURCE_DATE_EPOCH=1540748727
 
 %install
-export SOURCE_DATE_EPOCH=1540747708
+export SOURCE_DATE_EPOCH=1540748727
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
