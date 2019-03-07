@@ -4,7 +4,7 @@
 #
 Name     : R-fs
 Version  : 1.2.6
-Release  : 3
+Release  : 4
 URL      : https://cran.r-project.org/src/contrib/fs_1.2.6.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/fs_1.2.6.tar.gz
 Summary  : Cross-Platform File System Operations Based on 'libuv'
