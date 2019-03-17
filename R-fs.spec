@@ -4,19 +4,25 @@
 #
 Name     : R-fs
 Version  : 1.2.6
-Release  : 6
+Release  : 7
 URL      : https://cran.r-project.org/src/contrib/fs_1.2.6.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/fs_1.2.6.tar.gz
 Summary  : Cross-Platform File System Operations Based on 'libuv'
 Group    : Development/Tools
 License  : CC-BY-4.0 GPL-3.0 MIT
 Requires: R-fs-lib = %{version}-%{release}
+Requires: R-withr
 BuildRequires : R-Rcpp
 BuildRequires : R-rlang
+BuildRequires : R-withr
 BuildRequires : buildreq-R
 
 %description
-top of the 'libuv' C library.
+## Overview
+libuv is a multi-platform support library with a focus on asynchronous I/O. It
+was primarily developed for use by [Node.js][], but it's also
+used by [Luvit](http://luvit.io/), [Julia](http://julialang.org/),
+[pyuv](https://github.com/saghul/pyuv), and [others](https://github.com/libuv/libuv/wiki/Projects-that-use-libuv).
 
 %package lib
 Summary: lib components for the R-fs package.
@@ -34,10 +40,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1540748727
+export SOURCE_DATE_EPOCH=1552832451
 
 %install
-export SOURCE_DATE_EPOCH=1540748727
+export SOURCE_DATE_EPOCH=1552832451
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -73,8 +79,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library fs|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  fs || :
 
 
 %files
@@ -101,7 +106,27 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/fs/help/paths.rds
 /usr/lib64/R/library/fs/html/00Index.html
 /usr/lib64/R/library/fs/html/R.css
-/usr/lib64/R/library/fs/libs/symbols.rds
+/usr/lib64/R/library/fs/tests/testthat.R
+/usr/lib64/R/library/fs/tests/testthat/blns.txt.xz
+/usr/lib64/R/library/fs/tests/testthat/helper.R
+/usr/lib64/R/library/fs/tests/testthat/test-access.R
+/usr/lib64/R/library/fs/tests/testthat/test-copy.R
+/usr/lib64/R/library/fs/tests/testthat/test-create.R
+/usr/lib64/R/library/fs/tests/testthat/test-delete.R
+/usr/lib64/R/library/fs/tests/testthat/test-file.R
+/usr/lib64/R/library/fs/tests/testthat/test-file_exists.R
+/usr/lib64/R/library/fs/tests/testthat/test-fs_bytes.R
+/usr/lib64/R/library/fs/tests/testthat/test-fs_path.R
+/usr/lib64/R/library/fs/tests/testthat/test-fs_perms.R
+/usr/lib64/R/library/fs/tests/testthat/test-id.R
+/usr/lib64/R/library/fs/tests/testthat/test-is.R
+/usr/lib64/R/library/fs/tests/testthat/test-link.R
+/usr/lib64/R/library/fs/tests/testthat/test-list.R
+/usr/lib64/R/library/fs/tests/testthat/test-path.R
+/usr/lib64/R/library/fs/tests/testthat/test-path_package.R
+/usr/lib64/R/library/fs/tests/testthat/test-sanitize.R
+/usr/lib64/R/library/fs/tests/testthat/test-temp.R
+/usr/lib64/R/library/fs/tests/testthat/test-utils.R
 
 %files lib
 %defattr(-,root,root,-)
