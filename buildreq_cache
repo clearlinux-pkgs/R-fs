@@ -1,6 +1,7 @@
-1.2.7
+1.3.0
 R-Rcpp
 R-assertthat
 R-cli
+R-purrr
 R-rlang
 R-withr
