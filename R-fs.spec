@@ -4,7 +4,7 @@
 #
 Name     : R-fs
 Version  : 1.3.1
-Release  : 16
+Release  : 17
 URL      : https://cran.r-project.org/src/contrib/fs_1.3.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/fs_1.3.1.tar.gz
 Summary  : Cross-Platform File System Operations Based on 'libuv'
@@ -12,10 +12,14 @@ Group    : Development/Tools
 License  : CC-BY-4.0 GPL-3.0 MIT
 Requires: R-fs-lib = %{version}-%{release}
 Requires: R-Rcpp
-Requires: R-purrr
 BuildRequires : R-Rcpp
+BuildRequires : R-assertthat
+BuildRequires : R-cli
 BuildRequires : R-purrr
+BuildRequires : R-rlang
+BuildRequires : R-withr
 BuildRequires : buildreq-R
+BuildRequires : util-linux
 
 %description
 ## Overview
@@ -39,13 +43,13 @@ lib components for the R-fs package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1557193984
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1571833881
 
 %install
-export SOURCE_DATE_EPOCH=1557193984
+export SOURCE_DATE_EPOCH=1571833881
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -74,7 +78,7 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
