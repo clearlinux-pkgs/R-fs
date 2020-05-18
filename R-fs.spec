@@ -4,23 +4,17 @@
 #
 Name     : R-fs
 Version  : 1.4.1
-Release  : 23
+Release  : 24
 URL      : https://cran.r-project.org/src/contrib/fs_1.4.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/fs_1.4.1.tar.gz
 Summary  : Cross-Platform File System Operations Based on 'libuv'
 Group    : Development/Tools
 License  : CC-BY-4.0 GPL-3.0 MIT
 Requires: R-fs-lib = %{version}-%{release}
-Requires: R-purrr
-BuildRequires : R-purrr
 BuildRequires : buildreq-R
 
 %description
-## Overview
-libuv is a multi-platform support library with a focus on asynchronous I/O. It
-was primarily developed for use by [Node.js][], but it's also
-used by [Luvit](http://luvit.io/), [Julia](http://julialang.org/),
-[pyuv](https://github.com/saghul/pyuv), and [others](https://github.com/libuv/libuv/wiki/Projects-that-use-libuv).
+top of the 'libuv' C library.
 
 %package lib
 Summary: lib components for the R-fs package.
@@ -32,21 +26,22 @@ lib components for the R-fs package.
 
 %prep
 %setup -q -c -n fs
+cd %{_builddir}/fs
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1586275310
+export SOURCE_DATE_EPOCH=1589769886
 
 %install
-export SOURCE_DATE_EPOCH=1586275310
+export SOURCE_DATE_EPOCH=1589769886
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
