@@ -1,5 +1,8 @@
 # This file contains recursive sources that require this package
+R-gargle
 R-languageserver
 R-pkgdown
 R-reprex
+R-sass
 R-usethis
+R-vembedr
