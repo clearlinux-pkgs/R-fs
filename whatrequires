@@ -4,6 +4,7 @@ R-devtools
 R-gargle
 R-languageserver
 R-pkgdown
+R-pkgload
 R-reprex
 R-sass
 R-usethis
