@@ -4,7 +4,7 @@
 #
 Name     : R-fs
 Version  : 1.6.1
-Release  : 49
+Release  : 50
 URL      : https://cran.r-project.org/src/contrib/fs_1.6.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/fs_1.6.1.tar.gz
 Summary  : Cross-Platform File System Operations Based on 'libuv'
@@ -13,9 +13,6 @@ License  : MIT
 Requires: R-fs-lib = %{version}-%{release}
 Requires: R-fs-license = %{version}-%{release}
 BuildRequires : buildreq-R
-# Suppress stripping binaries
-%define __strip /bin/true
-%define debug_package %{nil}
 
 %description
 on top of the 'libuv' C library.
@@ -46,10 +43,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1675735958
+export SOURCE_DATE_EPOCH=1678820410
 
 %install
-export SOURCE_DATE_EPOCH=1675735958
+export SOURCE_DATE_EPOCH=1678820410
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/R-fs
 cp %{_builddir}/fs/inst/COPYRIGHTS %{buildroot}/usr/share/package-licenses/R-fs/fba7bce5197277bd54f0fd6a8a9c1bdd2a6cad77 || :
