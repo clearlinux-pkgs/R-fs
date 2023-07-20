@@ -4,10 +4,10 @@
 # Using build pattern: R
 #
 Name     : R-fs
-Version  : 1.6.2
-Release  : 54
-URL      : https://cran.r-project.org/src/contrib/fs_1.6.2.tar.gz
-Source0  : https://cran.r-project.org/src/contrib/fs_1.6.2.tar.gz
+Version  : 1.6.3
+Release  : 55
+URL      : https://cran.r-project.org/src/contrib/fs_1.6.3.tar.gz
+Source0  : https://cran.r-project.org/src/contrib/fs_1.6.3.tar.gz
 Summary  : Cross-Platform File System Operations Based on 'libuv'
 Group    : Development/Tools
 License  : MIT
@@ -37,16 +37,19 @@ license components for the R-fs package.
 
 %prep
 %setup -q -n fs
+pushd ..
+cp -a fs buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682436594
+export SOURCE_DATE_EPOCH=1689870240
 
 %install
-export SOURCE_DATE_EPOCH=1682436594
+export SOURCE_DATE_EPOCH=1689870240
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/R-fs
 cp %{_builddir}/fs/inst/COPYRIGHTS %{buildroot}/usr/share/package-licenses/R-fs/fba7bce5197277bd54f0fd6a8a9c1bdd2a6cad77 || :
@@ -87,6 +90,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
 R CMD check --no-manual --no-examples --no-codoc . || :
 
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
